@@ -1,11 +1,18 @@
 import React from 'react';
-import { Outlet, Link, useLocation } from 'react-router-dom';
+import { Outlet, Link, useLocation, useNavigate } from 'react-router-dom';
 import { Shield, LayoutDashboard, LogOut } from 'lucide-react';
+import { authService } from '../../services/api';
 
 export const Layout: React.FC = () => {
     const location = useLocation();
+    const navigate = useNavigate();
 
     const isActive = (path: string) => location.pathname === path;
+
+    const handleLogout = () => {
+        authService.logout();
+        navigate('/login');
+    };
 
     return (
         <div className="flex min-h-screen bg-slate-900 text-slate-100 font-sans">
@@ -39,10 +46,7 @@ export const Layout: React.FC = () => {
                 <div className="pt-6 border-t border-slate-700">
                     <button
                         className="flex items-center gap-3 px-3 py-2.5 w-full rounded-lg text-slate-400 hover:bg-slate-700/50 hover:text-red-400 transition-colors"
-                        onClick={() => {
-                            // TODO: Implement logout
-                            window.location.href = '/login';
-                        }}
+                        onClick={handleLogout}
                     >
                         <LogOut className="w-5 h-5" />
                         <span className="font-medium">Sign Out</span>
