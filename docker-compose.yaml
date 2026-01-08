@@ -1,0 +1,52 @@
+version: '3.8'
+
+services:
+
+  mongo:
+    image: mongo:6.0
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+
+  phishing-simulation:
+    build: ./phishing-simulation-service
+    image: phishing-simulate:0.0.1
+    ports:
+      - "9845:9845"
+    environment:
+      - PORT=9845
+      - HOST=localhost
+      - MONGO_URI=mongodb://mongo:27017/local
+      - GMAIL_USER=omric2806@gmail.com
+      - GOOGLE_CLIENT_ID=49147957579-bdpou8htdupb124np17384qnpcmbmouc.apps.googleusercontent.com
+      - GOOGLE_CLIENT_SECRET=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
+      - GOOGLE_REFRESH_TOKEN=1//04jY4RO00CKsnCgYIARAAGAQSNwF-L9IrvXiIYykFOBWSJbJGaErfb0C_c--T6_6hywEaiHldBPkxX1S8nA_G7p0yYtxZ42udiOc
+    depends_on:
+      - mongo
+
+  phishing-management:
+    build: ./phishing-management-service
+    image: phishing-management:0.0.1
+    ports:
+      - "4547:4547"
+    environment:
+      - PORT=4547
+      - HOST=localhost
+      - MONGO_URI=mongodb://mongo:27017/local
+      - PHISHING_SIMULATION_URL=http://phishing-simulation:9845/phishing-simulation
+    depends_on:
+      - mongo
+
+  phishing-frontend:
+    build: ./frontend
+    image: phishing-frontend:0.0.2
+    environment:
+      - VITE_API_URL=http://localhost:4547
+    ports:
+      - "80:80"
+    depends_on:
+      - phishing-management
+
+volumes:
+  mongo-data:
