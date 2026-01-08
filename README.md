@@ -17,3 +17,7 @@ Once running, the application will be accessible at:
 - **Frontend**: http://localhost:80
 - **Phishing Management API**: http://localhost:4547
 - **Phishing Simulation API**: http://localhost:9845
+
+## Please note
+ You have to add mail sender environment variables (GMAIL_USER, GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, GOOGLE_REFRESH_TOKEN) to the docker-compose.yaml file.
+s
