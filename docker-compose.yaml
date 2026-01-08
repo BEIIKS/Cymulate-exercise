@@ -18,10 +18,7 @@ services:
       - PORT=9845
       - HOST=localhost
       - MONGO_URI=mongodb://mongo:27017/local
-      - GMAIL_USER=omric2806@gmail.com
-      - GOOGLE_CLIENT_ID=49147957579-bdpou8htdupb124np17384qnpcmbmouc.apps.googleusercontent.com
-      - GOOGLE_CLIENT_SECRET=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
-      - GOOGLE_REFRESH_TOKEN=1//04jY4RO00CKsnCgYIARAAGAQSNwF-L9IrvXiIYykFOBWSJbJGaErfb0C_c--T6_6hywEaiHldBPkxX1S8nA_G7p0yYtxZ42udiOc
+      # TODO: Add mail sender environment variables (GMAIL_USER, GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, GOOGLE_REFRESH_TOKEN).
     depends_on:
       - mongo
 
