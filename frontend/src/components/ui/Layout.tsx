@@ -16,7 +16,6 @@ export const Layout: React.FC = () => {
 
     return (
         <div className="flex min-h-screen bg-slate-900 text-slate-100 font-sans">
-            {/* Sidebar */}
             <aside className="fixed left-0 top-0 h-screen w-64 bg-slate-800 border-r border-slate-700 p-6 flex flex-col z-10">
                 <div className="flex items-center gap-3 mb-8">
                     <div className="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center">
@@ -40,7 +39,6 @@ export const Layout: React.FC = () => {
                         <LayoutDashboard className="w-5 h-5" />
                         <span className="font-medium">Dashboard</span>
                     </Link>
-                    {/* Add more links here later */}
                 </nav>
 
                 <div className="pt-6 border-t border-slate-700">
@@ -54,7 +52,6 @@ export const Layout: React.FC = () => {
                 </div>
             </aside>
 
-            {/* Main Content */}
             <main className="flex-1 ml-64 p-8">
                 <div className="container mx-auto">
                     <Outlet />

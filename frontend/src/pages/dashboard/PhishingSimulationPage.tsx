@@ -35,7 +35,7 @@ export const PhishingSimulationPage: React.FC = () => {
         try {
             await phishingService.triggerAttempt(email);
             setEmail('');
-            await fetchAttempts(); // Refresh list
+            await fetchAttempts();
         } catch (error) {
             console.error('Failed to trigger attempt', error);
         } finally {
@@ -82,7 +82,6 @@ export const PhishingSimulationPage: React.FC = () => {
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                {/* Trigger Form */}
                 <Card title="Trigger Simulation" className="lg:col-span-1 h-fit">
                     <form onSubmit={handleTrigger} className="space-y-4">
                         <Input
@@ -108,7 +107,6 @@ export const PhishingSimulationPage: React.FC = () => {
                     </form>
                 </Card>
 
-                {/* Attempts Table */}
                 <Card title="Recent Attempts" className="lg:col-span-2">
                     {isLoading ? (
                         <div className="flex items-center justify-center p-12 text-slate-500">

@@ -20,8 +20,6 @@ export const Button: React.FC<ButtonProps> = ({
     disabled,
     ...props
 }) => {
-    // const baseStyles = '...'; // Removed unused variables
-    // const variants = { ... }; // Removed unused variables
 
     return (
         <button

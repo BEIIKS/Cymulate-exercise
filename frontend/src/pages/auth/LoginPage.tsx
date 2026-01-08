@@ -20,8 +20,7 @@ export const LoginPage: React.FC = () => {
 
         try {
             await authService.login(email, password);
-            // In a real app, store token here (Context/Redux/LocalStorage)
-            // localStorage.setItem('token', response.token); 
+
             navigate('/');
         } catch (err: any) {
             setError(err.message || 'Login failed');

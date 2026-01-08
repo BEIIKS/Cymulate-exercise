@@ -3,7 +3,7 @@ import { Controller, Get, Post, Body, UseGuards } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { PhishingService } from './phishing.service';
 
-@Controller('phishing') // Matches the route 'phishing'
+@Controller('phishing')
 export class PhishingController {
     constructor(private readonly phishingService: PhishingService) { }
 
